@@ -350,14 +350,3 @@ class BinanceAPIManager:
         trade_log.set_complete(order.cumulative_quote_qty)
 
         return order
-
-    def log_current_balance(self):
-        """
-        Logs current balance in given BALANCE_LOG_CURRENCY config, like, XX.XX USDT
-        """
-
-        currency_symbol = self.config.BALANCE_LOG_CURRENCY
-        current_balance = self.get_currency_balance(currency_symbol)
-
-        self.logger.info(f"Current balance: {current_balance} {currency_symbol}")
-    

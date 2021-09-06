@@ -20,9 +20,7 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
             "tld": "com",
             "strategy": "default",
             "sell_timeout": "10",
-            "buy_timeout": "10",
-            "balance_log_interval": "10",
-            "balance_log_currency": "USDT"
+            "buy_timeout": "10"
         }
 
         if not os.path.exists(CFG_FL_NAME):
@@ -74,8 +72,3 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
 
         self.SELL_TIMEOUT = os.environ.get("SELL_TIMEOUT") or config.get(USER_CFG_SECTION, "sell_timeout")
         self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT") or config.get(USER_CFG_SECTION, "buy_timeout")
-
-        self.BALANCE_LOG_INTERVAL = int(
-            os.environ.get("BALANCE_LOG_INTERVAL") or config.get(USER_CFG_SECTION, "balance_log_interval")
-        )
-        self.BALANCE_LOG_CURRENCY = os.environ.get("BALANCE_LOG_CURRENCY") or config.get(USER_CFG_SECTION, "balance_log_currency")
