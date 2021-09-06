@@ -14,13 +14,15 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         config = configparser.ConfigParser()
         config["DEFAULT"] = {
             "bridge": "USDT",
-            "scout_multiplier": "5",
-            "scout_sleep_time": "5",
-            "hourToKeepScoutHistory": "1",
+            "scout_multiplier": 2,
+            "scout_sleep_time": 1,
+            "hourToKeepScoutHistory": 1,
             "tld": "com",
             "strategy": "default",
-            "sell_timeout": "0",
-            "buy_timeout": "0",
+            "sell_timeout": 10,
+            "buy_timeout": 10,
+            "balance_log_interval": 10,
+            "balance_log_currency": "USDT"
         }
 
         if not os.path.exists(CFG_FL_NAME):
@@ -54,6 +56,7 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         supported_coin_list = [
             coin.strip() for coin in os.environ.get("SUPPORTED_COIN_LIST", "").split() if coin.strip()
         ]
+
         # Get supported coin list from supported_coin_list file
         if not supported_coin_list and os.path.exists("supported_coin_list"):
             with open("supported_coin_list") as rfh:
@@ -62,6 +65,7 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
                     if not line or line.startswith("#") or line in supported_coin_list:
                         continue
                     supported_coin_list.append(line)
+                    
         self.SUPPORTED_COIN_LIST = supported_coin_list
 
         self.CURRENT_COIN_SYMBOL = os.environ.get("CURRENT_COIN_SYMBOL") or config.get(USER_CFG_SECTION, "current_coin")
@@ -70,3 +74,8 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
 
         self.SELL_TIMEOUT = os.environ.get("SELL_TIMEOUT") or config.get(USER_CFG_SECTION, "sell_timeout")
         self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT") or config.get(USER_CFG_SECTION, "buy_timeout")
+
+        self.BALANCE_LOG_INTERVAL = int(
+            os.environ("BALANCE_LOG_INTERVAL") or config.get(USER_CFG_SECTION, "balance_log_interval")
+        )
+        self.BALANCE_LOG_CURRENCY = os.environ("BALANCE_LOG_CURRENCY") or config.get(USER_CFG_SECTION, "balance_log_currency")

@@ -10,3 +10,5 @@ scout_sleep_time=1
 strategy=default
 buy_timeout=0
 sell_timeout=0
+balance_log_interval=10
+balance_log_currency=USDT
