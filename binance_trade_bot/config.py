@@ -76,6 +76,6 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT") or config.get(USER_CFG_SECTION, "buy_timeout")
 
         self.BALANCE_LOG_INTERVAL = int(
-            os.environ("BALANCE_LOG_INTERVAL") or config.get(USER_CFG_SECTION, "balance_log_interval")
+            os.environ.get("BALANCE_LOG_INTERVAL") or config.get(USER_CFG_SECTION, "balance_log_interval")
         )
-        self.BALANCE_LOG_CURRENCY = os.environ("BALANCE_LOG_CURRENCY") or config.get(USER_CFG_SECTION, "balance_log_currency")
+        self.BALANCE_LOG_CURRENCY = os.environ.get("BALANCE_LOG_CURRENCY") or config.get(USER_CFG_SECTION, "balance_log_currency")
