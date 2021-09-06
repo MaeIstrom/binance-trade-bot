@@ -14,14 +14,14 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         config = configparser.ConfigParser()
         config["DEFAULT"] = {
             "bridge": "USDT",
-            "scout_multiplier": 2,
-            "scout_sleep_time": 1,
-            "hourToKeepScoutHistory": 1,
+            "scout_multiplier": "2",
+            "scout_sleep_time": "1",
+            "hourToKeepScoutHistory": "1",
             "tld": "com",
             "strategy": "default",
-            "sell_timeout": 10,
-            "buy_timeout": 10,
-            "balance_log_interval": 10,
+            "sell_timeout": "10",
+            "buy_timeout": "10",
+            "balance_log_interval": "10",
             "balance_log_currency": "USDT"
         }
 
